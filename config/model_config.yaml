@@ -1,0 +1,43 @@
+# config/model_config.yaml
+models:
+  # GPT系列
+  gpt-4o-mini:
+    provider_type: "openai_compatible"
+    context_window: 128000
+    max_output_tokens: 16384
+    supported_features: ["chat", "json_mode", "function_calling"]
+
+  gpt-4o:
+    provider_type: "openai_compatible"
+    context_window: 128000
+    max_output_tokens: 16384
+
+  # Claude系列
+  claude-3-5-sonnet:
+    provider_type: "anthropic"
+    context_window: 200000
+    max_output_tokens: 8192
+
+  # DeepSeek系列
+  deepseek-chat:
+    provider_type: "deepseek"
+    context_window: 128000
+    max_output_tokens: 8192
+
+# 特征提取专用模型配置
+feature_extraction:
+  rhetorical_questions:
+    preferred_models: ["gpt-4o-mini", "claude-3-5-sonnet"]
+    fallback_models: ["gpt-4o", "deepseek-chat"]
+    temperature: 0.0
+    max_tokens: 1000
+
+  metaphor_detection:
+    preferred_models: ["gpt-4o", "claude-3-5-sonnet"]
+    temperature: 0.1
+    max_tokens: 1500
+
+  sentiment_analysis:
+    preferred_models: ["gpt-4o-mini"]
+    temperature: 0.0
+    max_tokens: 500

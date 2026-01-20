@@ -1,0 +1,65 @@
+(.venv) PS C:\Users\27981\PycharmProjects\lichang> python -m neural.run_neural   --train data/train.jsonl --dev data/validation.jsonl --test data/test.jsonl   --model_type N1 --backbone bert-base-uncased --num_labels 3   --bs 8 --max_len 96 --epochs 3
+C:\Users\27981\PycharmProjects\lichang\.venv\lib\site-packages\transformers\optimization.py:591: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+  step=50/328 loss=1.0330
+  step=100/328 loss=0.8907
+  step=150/328 loss=0.7928
+  step=200/328 loss=0.7721
+  step=250/328 loss=1.2162
+  step=300/328 loss=0.9098
+epoch=1 loss=0.9395 dev_acc=0.6531 dev_f1=0.6265 ✅ best
+  step=50/328 loss=0.2983
+  step=100/328 loss=0.7912
+  step=150/328 loss=0.7140
+  step=200/328 loss=0.2477
+  step=250/328 loss=1.0366
+  step=300/328 loss=0.7060
+epoch=2 loss=0.6367 dev_acc=0.6803 dev_f1=0.6492 ✅ best
+  step=50/328 loss=0.3080
+  step=100/328 loss=0.8910
+  step=150/328 loss=0.1950
+  step=200/328 loss=0.3700
+  step=250/328 loss=1.0371
+  step=300/328 loss=0.3829
+epoch=3 loss=0.3854 dev_acc=0.7041 dev_f1=0.6919 ✅ best
+
+Best dev_f1=0.6919 saved to: ../checkpoints\best_N1_bert-base-uncased.pt
+C:\Users\27981\PycharmProjects\lichang\neural\run_neural.py:89: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which u
+ses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/
+pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limi
+ts the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted
+ by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(best_path, map_location=device)
+
+Loaded best checkpoint (epoch=3, dev_f1=0.6919)
+TEST  acc=0.6685  macro_f1=0.6377
+
+(.venv) PS C:\Users\27981\PycharmProjects\lichang> python -m neural.run_neural   --train data/train.jsonl --dev data/validation.jsonl --test data/test.jsonl   --model_type N2 --backbone bert-base-uncased --num_labels 3   --rf_path data/rhetoric_features_all0113addcon2.jsonl --rf_dim 10   --bs 8 --max_len 96 --epochs 3
+C:\Users\27981\PycharmProjects\lichang\.venv\lib\site-packages\transformers\optimization.py:591: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+  step=50/328 loss=1.3130
+  step=100/328 loss=0.6450
+  step=150/328 loss=0.9202
+  step=200/328 loss=1.0186
+  step=250/328 loss=0.6604
+  step=300/328 loss=1.2323
+epoch=1 loss=0.9358 dev_acc=0.5850 dev_f1=0.5637 ✅ best
+  step=50/328 loss=0.5706
+  step=100/328 loss=0.3773
+  step=150/328 loss=0.1767
+  step=200/328 loss=0.3801
+  step=250/328 loss=0.4106
+  step=300/328 loss=0.4030
+epoch=2 loss=0.6170 dev_acc=0.6871 dev_f1=0.6796 ✅ best
+  step=50/328 loss=0.2181
+  step=100/328 loss=0.3344
+  step=150/328 loss=0.0861
+  step=200/328 loss=0.4966
+  step=250/328 loss=0.1685
+  step=300/328 loss=0.5097
+epoch=3 loss=0.3603 dev_acc=0.6803 dev_f1=0.6717
+
+Best dev_f1=0.6796 saved to: ../checkpoints\best_N2_bert-base-uncased.pt
+
+Loaded best checkpoint (epoch=2, dev_f1=0.6796)
+TEST  acc=0.6717  macro_f1=0.6385

@@ -1,0 +1,29 @@
+# config/api_config.yaml
+providers:
+  openai_compatible:
+    enabled: true
+    priority: 1
+    configs:
+      # 使用你提供的两个中转接口
+      - name: "runapi_v1"
+        base_url: "https://api.shubiaobiao.com/v1"
+        api_key_env: "RUNAPI_API_KEY"
+        timeout: 60
+        max_retries: 2
+        cost_per_1k_tokens: 0.001
+
+      - name: "runapi_v2"
+        base_url: "https://api.shubiaobiao.com/v1"
+        api_key_env: "RUNAPI_API_KEY"  # 可能使用同一个key
+        timeout: 60
+        max_retries: 2
+        cost_per_1k_tokens: 0.001
+
+# 全局策略
+global_strategy:
+  fallback_enabled: true
+  load_balancing: "priority"
+  max_total_retries: 3
+  rate_limit_window: 60
+  rate_limit_max_requests: 50
+  cache_enabled: false
