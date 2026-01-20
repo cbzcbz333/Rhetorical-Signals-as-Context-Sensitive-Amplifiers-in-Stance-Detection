@@ -18,12 +18,19 @@ Experiments are conducted on the **SemEval-2016 Task 6** dataset, using both fea
 
 .
 ├── data/ # Data preparation scripts (SemEval-2016)
+
 ├── features/ # Rhetorical feature extraction modules
+
 ├── models/ # Linear and neural stance detection models
+
 ├── scripts/ # Training and evaluation scripts
+
 ├── configs/ # Model and experiment configurations
+
 ├── analysis/ # Feature weight analysis and error inspection
+
 ├── requirements.txt
+
 └── README.md
 
 
